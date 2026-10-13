@@ -1,0 +1,172 @@
+[
+  {
+    "text": "Tesla delivered 1.8 million vehicles in 2023.",
+    "expected": [
+      "FACT"
+    ],
+    "got": [
+      "FACT"
+    ],
+    "claims": [
+      {
+        "id": "c1",
+        "original_text": "Tesla delivered 1.8 million vehicles in 2023.",
+        "normalized_claim": "Tesla delivered 1.8 million vehicles in 2023.",
+        "statement_type": "fact",
+        "position": 0,
+        "context": "Tesla delivered 1.8 million vehicles in 2023.",
+        "language": "en"
+      }
+    ],
+    "pass": true
+  },
+  {
+    "text": "Our startup has five million users and grew revenue by 80% last year.",
+    "expected": [
+      "FACT",
+      "FACT"
+    ],
+    "got": [
+      "FACT",
+      "FACT"
+    ],
+    "claims": [
+      {
+        "id": "c1",
+        "original_text": "Our startup has five million users",
+        "normalized_claim": "The startup has five million users.",
+        "statement_type": "fact",
+        "position": 0,
+        "context": "Our startup has five million users and grew revenue by 80% last year.",
+        "language": "en"
+      },
+      {
+        "id": "c2",
+        "original_text": "grew revenue by 80% last year",
+        "normalized_claim": "The startup grew revenue by 80% last year.",
+        "statement_type": "fact",
+        "position": 39,
+        "context": "Our startup has five million users and grew revenue by 80% last year.",
+        "language": "en"
+      }
+    ],
+    "pass": true
+  },
+  {
+    "text": "I think this is the best phone ever made.",
+    "expected": [
+      "OPINION"
+    ],
+    "got": [
+      "OPINION"
+    ],
+    "claims": [
+      {
+        "id": "c1",
+        "original_text": "I think this is the best phone ever made.",
+        "normalized_claim": "This is the best phone ever made.",
+        "statement_type": "opinion",
+        "position": 0,
+        "context": "I think this is the best phone ever made.",
+        "language": "en"
+      }
+    ],
+    "pass": true
+  },
+  {
+    "text": "Electric cars will probably replace petrol cars by 2040.",
+    "expected": [
+      "PREDICTION"
+    ],
+    "got": [
+      "PREDICTION"
+    ],
+    "claims": [
+      {
+        "id": "c1",
+        "original_text": "Electric cars will probably replace petrol cars by 2040.",
+        "normalized_claim": "Electric cars will probably replace petrol cars by 2040.",
+        "statement_type": "prediction",
+        "position": 0,
+        "context": "Electric cars will probably replace petrol cars by 2040.",
+        "language": "en"
+      }
+    ],
+    "pass": true
+  },
+  {
+    "text": "India has over 1.4 billion people, which is amazing, and it will soon become the largest economy.",
+    "expected": [
+      "FACT",
+      "OPINION",
+      "PREDICTION"
+    ],
+    "got": [
+      "FACT",
+      "OPINION",
+      "PREDICTION"
+    ],
+    "claims": [
+      {
+        "id": "c1",
+        "original_text": "India has over 1.4 billion people",
+        "normalized_claim": "India has over 1.4 billion people.",
+        "statement_type": "fact",
+        "position": 0,
+        "context": "India has over 1.4 billion people, which is amazing, and it will soon become the largest economy.",
+        "language": "en"
+      },
+      {
+        "id": "c2",
+        "original_text": "which is amazing",
+        "normalized_claim": "India having over 1.4 billion people is amazing.",
+        "statement_type": "opinion",
+        "position": 35,
+        "context": "India has over 1.4 billion people, which is amazing, and it will soon become the largest economy.",
+        "language": "en"
+      },
+      {
+        "id": "c3",
+        "original_text": "it will soon become the largest economy",
+        "normalized_claim": "India will soon become the largest economy.",
+        "statement_type": "prediction",
+        "position": 57,
+        "context": "India has over 1.4 billion people, which is amazing, and it will soon become the largest economy.",
+        "language": "en"
+      }
+    ],
+    "pass": true
+  },
+  {
+    "text": "भारत की जनसंख्या 140 करोड़ से ज़्यादा है, aur mujhe lagta hai ye bahut zyada hai.",
+    "expected": [
+      "FACT",
+      "OPINION"
+    ],
+    "got": [
+      "FACT",
+      "OPINION"
+    ],
+    "claims": [
+      {
+        "id": "c1",
+        "original_text": "भारत की जनसंख्या 140 करोड़ से ज़्यादा है",
+        "normalized_claim": "भारत की जनसंख्या 140 करोड़ से ज़्यादा है।",
+        "statement_type": "fact",
+        "position": 0,
+        "context": "भारत की जनसंख्या 140 करोड़ से ज़्यादा है, aur mujhe lagta hai ye bahut zyada hai.",
+        "language": "hi"
+      },
+      {
+        "id": "c2",
+        "original_text": "mujhe lagta hai ye bahut zyada hai",
+        "normalized_claim": "Bharat ki jansankhya bahut zyada hai.",
+        "statement_type": "opinion",
+        "position": 46,
+        "context": "भारत की जनसंख्या 140 करोड़ से ज़्यादा है, aur mujhe lagta hai ye bahut zyada hai.",
+        "language": "hinglish"
+      }
+    ],
+    "pass": true
+  }
+]

@@ -80,10 +80,17 @@ def extract_claims(text, retries=6):
 
 
 if __name__ == "__main__":
+    results = []
+    passed = 0
     for i, text in enumerate(TEST_TEXTS):
         claims = extract_claims(text)
-        print(f"\nText {i + 1}: {text}")
-        print("  EXPECTED:", [t for t, _ in EXPECTED[i]])
-        print("  GOT:     ", [c["statement_type"].upper() for c in claims])
-        for c in claims:
-            print(f"   - [{c['statement_type']}] {c['normalized_claim']} (pos {c['position']})")
+        got = [c["statement_type"].upper() for c in claims]
+        expected = [t for t, _ in EXPECTED[i]]
+        ok = got == expected
+        passed += ok
+        print(f"Text {i + 1}: {'PASS' if ok else 'FAIL'}  expected={expected} got={got}")
+        results.append({"text": text, "expected": expected, "got": got, "claims": claims, "pass": ok})
+
+    print(f"\n{passed}/{len(TEST_TEXTS)} passed")
+    with open("results.json", "w", encoding="utf-8") as f:
+        json.dump(results, f, ensure_ascii=False, indent=2)
