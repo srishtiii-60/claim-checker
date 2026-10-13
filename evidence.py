@@ -2,19 +2,18 @@ import json
 import urllib.parse
 import urllib.request
 
-API = "https://en.wikipedia.org/w/api.php"
 HEADERS = {"User-Agent": "claim-checker-student-project/0.1"}
 
 
-def _get(params):
-    url = API + "?" + urllib.parse.urlencode(params)
+def _get(lang, params):
+    url = f"https://{lang}.wikipedia.org/w/api.php?" + urllib.parse.urlencode(params)
     req = urllib.request.Request(url, headers=HEADERS)
     with urllib.request.urlopen(req, timeout=15) as resp:
         return json.loads(resp.read().decode("utf-8"))
 
 
-def search_wikipedia(query, limit=3):
-    data = _get({
+def search_wikipedia(query, limit=3, lang="en"):
+    data = _get(lang, {
         "action": "query",
         "list": "search",
         "srsearch": query,
@@ -25,7 +24,7 @@ def search_wikipedia(query, limit=3):
     if not titles:
         return []
 
-    pages = _get({
+    pages = _get(lang, {
         "action": "query",
         "prop": "extracts",
         "exintro": 1,
@@ -41,7 +40,7 @@ def search_wikipedia(query, limit=3):
         results.append({
             "title": title,
             "extract": page.get("extract", ""),
-            "url": "https://en.wikipedia.org/wiki/" + urllib.parse.quote(title.replace(" ", "_")),
+            "url": f"https://{lang}.wikipedia.org/wiki/" + urllib.parse.quote(title.replace(" ", "_")),
         })
 
     order = {t: i for i, t in enumerate(titles)}
@@ -57,7 +56,11 @@ if __name__ == "__main__":
         for claim in entry["claims"]:
             if claim["statement_type"] != "fact":
                 continue
-            print("\nCLAIM:", claim["normalized_claim"])
-            for r in search_wikipedia(claim["normalized_claim"], limit=2):
+            lang = "hi" if claim["language"] == "hi" else "en"
+            print(f"\nCLAIM ({lang}):", claim["normalized_claim"])
+            found = search_wikipedia(claim["normalized_claim"], limit=2, lang=lang)
+            if not found:
+                print("  (no results)")
+            for r in found:
                 print("  -", r["title"], "|", r["url"])
                 print("   ", r["extract"][:200].replace("\n", " "))
