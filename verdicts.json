@@ -1,0 +1,37 @@
+[
+  {
+    "claim": "Tesla delivered 1.8 million vehicles in 2023.",
+    "verdict": "insufficient_evidence",
+    "reason": "The provided evidence does not mention the total number of vehicles delivered by Tesla in 2023.",
+    "source_title": "",
+    "query": "Tesla vehicle deliveries 2023"
+  },
+  {
+    "claim": "The startup has five million users.",
+    "verdict": "insufficient_evidence",
+    "reason": "The provided text does not mention the startup's user count.",
+    "source_title": "",
+    "query": "startup five million users"
+  },
+  {
+    "claim": "The startup grew revenue by 80% last year.",
+    "verdict": "insufficient_evidence",
+    "reason": "The provided evidence does not contain any information about the startup's revenue growth.",
+    "source_title": "",
+    "query": "The startup grew revenue by 80% last year."
+  },
+  {
+    "claim": "India has over 1.4 billion people.",
+    "verdict": "supported",
+    "reason": "The evidence states that India's population reached slightly over 1.428 billion in July 2023.",
+    "source_title": "Demographics of India",
+    "query": "India population"
+  },
+  {
+    "claim": "भारत की जनसंख्या 140 करोड़ से ज़्यादा है।",
+    "verdict": "insufficient_evidence",
+    "reason": "दलीलें केवल २००१ की अनुतेक के अनुसवर १ अरद 13 करीडरी करर करती हैं, १३० करीडर कर की की सवरूत नहीं करती।",
+    "source_title": "",
+    "query": "भारत की जनसंख्या"
+  }
+]
